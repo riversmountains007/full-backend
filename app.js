@@ -1,8 +1,11 @@
-import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import express from "express";
 
-const app = express();
+
+const app = express()
+
+
 app.use(cors(
     {
         origin: 'http://localhost:3000',
@@ -22,6 +25,11 @@ app.use(cookieParser());
 import userRoute from './routes/user.route.js';
 
 //use routes
-app.use('api/v1/user',userRoute);
+app.use('/user',userRoute);
 
-export default app;
+app.get('/test', (req, res) => {
+    res.send('app.js is running')
+  })
+
+
+  export default app;
